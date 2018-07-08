@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>A Counter Problem</title>
+    <script>
+        function plusSame(dig, tpe) {
+            cur = parseInt(document.getElementById(dig).innerHTML);
+            for (i = 0; i < 4; i++) {
+                if (document.getElementById(i).innerHTML == cur) {
+                    if (cur != 9) {
+                        document.getElementById(i).innerHTML = cur + 1;
+                    } else {
+                        document.getElementById(i).innerHTML = 0;
+                        //if (dig < 3){
+                        //    plusSame(dig+1,tpe);
+                        //
+                    }
+                }
+            }
+        }
+        function plus0(dig) {
+            plus(dig);
+            count();
+        }
+        function plus(dig) {
+            if (parseInt(document.getElementById(dig).innerHTML) != 9) {
+                document.getElementById(dig).innerHTML = parseInt(document.getElementById(dig).innerHTML) +1;
+            } else {
+                document.getElementById(dig).innerHTML = 0;
+                if (dig < 3) { plus(dig + 1); }
+            }
+        }
+        function count() {
+            document.getElementById("times").innerHTML = parseInt(document.getElementById("times").innerHTML) + 1
+        }
+    </script>
+</head>
+
+<body>
+    <table border="0">
+        <tr>
+            <td onclick="plusSame(3,1)">仌</td>
+            <td onclick="plusSame(2,1)">仌</td>
+            <td onclick="plusSame(1,1)">仌</td>
+            <td onclick="plusSame(0,1)">仌</td>
+        </tr>
+        <tr>
+            <td onclick="plusSame(3,0)">人</td>
+            <td onclick="plusSame(2,0)">人</td>
+            <td onclick="plusSame(1,0)">人</td>
+            <td onclick="plusSame(0,0)">人</td>
+        </tr>
+        <tr>
+            <td id="3">0</td>
+            <td id="2">0</td>
+            <td id="1">0</td>
+            <td id="0">0</td>
+        </tr>
+    </table>
+    <dir onclick="plus0(0)">按钮</dir>
+    <dir>使用次数</dir><dir id="times">0</dir>
+</body>
+
+</html>
