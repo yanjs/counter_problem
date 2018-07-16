@@ -1,14 +1,31 @@
-<html>
+Ôªø<html>
 
 <head>
+
+     <meta charset="UTF-8"> 
     <title>A Counter Problem</title>
     <script>
+        function digit(dig) {
+            return parseInt(document.getElementById(dig).innerHTML);
+        }
         function plusSame(dig, tpe) {
-            cur = parseInt(document.getElementById(dig).innerHTML);
+            cur = digit(dig);
+            min = 10;
+            for (j = 0; j < 4; j++) {
+                if (min > digit(j) && digit(j) > cur) {
+                    min = digit(j);
+                }
+            }
             for (i = 0; i < 4; i++) {
                 if (document.getElementById(i).innerHTML == cur) {
                     if (cur != 9) {
-                        document.getElementById(i).innerHTML = cur + 1;
+                        console.log(tpe);
+                        if (tpe == 0) {
+                            document.getElementById(i).innerHTML = cur + 1;
+                        }
+                        if (tpe == 1 && cur < 9) {
+                            document.getElementById(i).innerHTML = min - 1;
+                        }
                     } else {
                         document.getElementById(i).innerHTML = 0;
                         //if (dig < 3){
@@ -23,42 +40,48 @@
             count();
         }
         function plus(dig) {
-            if (parseInt(document.getElementById(dig).innerHTML) != 9) {
-                document.getElementById(dig).innerHTML = parseInt(document.getElementById(dig).innerHTML) +1;
+            if (digit(dig) != 9) {
+                document.getElementById(dig).innerHTML = digit(dig) + 1;
             } else {
                 document.getElementById(dig).innerHTML = 0;
                 if (dig < 3) { plus(dig + 1); }
             }
         }
         function count() {
-            document.getElementById("times").innerHTML = parseInt(document.getElementById("times").innerHTML) + 1
+            document.getElementById("times").innerHTML = digit("times") + 1;
         }
     </script>
+    <style>
+        table {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body unselectable="on" onselectstart="return false;" style="-moz-user-select:none;">
-    <table border="0">
+    <table border=".5">
         <tr>
-            <td onclick="plusSame(3,1)">Åï</td>
-            <td onclick="plusSame(2,1)">Åï</td>
-            <td onclick="plusSame(1,1)">Åï</td>
-            <td onclick="plusSame(0,1)">Åï</td>
+            <td onclick="plusSame(3,1)">‚Üë‚Üë</td>
+            <td onclick="plusSame(2,1)">‚Üë‚Üë</td>
+            <td onclick="plusSame(1,1)">‚Üë‚Üë</td>
+            <td onclick="plusSame(0,1)">‚Üë‚Üë</td>
+            <td>times</td>
         </tr>
         <tr>
-            <td onclick="plusSame(3,0)">»À</td>
-            <td onclick="plusSame(2,0)">»À</td>
-            <td onclick="plusSame(1,0)">»À</td>
-            <td onclick="plusSame(0,0)">»À</td>
+            <td onclick="plusSame(3,0)">‚Üë</td>
+            <td onclick="plusSame(2,0)">‚Üë</td>
+            <td onclick="plusSame(1,0)">‚Üë</td>
+            <td onclick="plusSame(0,0)">‚Üë</td>
+            <td id="times">0</td>
         </tr>
         <tr>
             <td id="3">0</td>
             <td id="2">0</td>
             <td id="1">0</td>
             <td id="0">0</td>
+            <td onclick="plus0(0)">‚óè</td>
         </tr>
     </table>
-    <dir onclick="plus0(0)">∞¥≈•</dir>
-    <dir> π”√¥Œ ˝</dir><dir id="times">0</dir>
 </body>
 
 </html>
